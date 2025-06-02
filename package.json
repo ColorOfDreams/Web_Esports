@@ -1,0 +1,37 @@
+{
+  "name": "web-lol-esports",
+  "version": "1.0.0",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "nodemon --inspect src/app.js",
+    "watch": "sass --watch src/resources/scss:src/public/css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ColorOfDreams/Web_Esports.git"
+  },
+  "keywords": [
+    "node.js.",
+    "lol-esports",
+    "esports",
+    "mockiemvosong"
+  ],
+  "author": "Huy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ColorOfDreams/Web_Esports/issues"
+  },
+  "homepage": "https://github.com/ColorOfDreams/Web_Esports#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0",
+    "express-handlebars": "^8.0.3",
+    "mongoose": "^8.15.0"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.10",
+    "sass": "^1.89.0"
+  }
+}

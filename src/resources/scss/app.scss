@@ -1,0 +1,31 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #1F1F1F;
+    color: azure;
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    /* Đảm bảo chiều cao tối thiểu bằng viewport */
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    flex: 1;
+    padding-top: 75px !important;
+}
+
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+footer {
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+}

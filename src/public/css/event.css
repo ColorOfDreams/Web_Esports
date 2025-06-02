@@ -1,0 +1,89 @@
+@charset "UTF-8";
+.container-event {
+  min-height: 700px;
+  padding-top: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.content-event {
+  position: relative;
+  width: 100%;
+  min-height: 370px;
+  background: url(/img/71289610_p0_master1200.jpg) center/cover no-repeat;
+  overflow: hidden;
+}
+
+.content-event::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  /* hoặc filter: brightness(20%) nếu thích */
+  z-index: 0;
+}
+
+.content-top {
+  height: 75px;
+  font-size: 35px;
+  color: white;
+  filter: brightness(100%);
+}
+
+.content-mid {
+  height: 180px;
+}
+
+.content-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  font-size: 25px;
+  padding-top: 30px;
+}
+
+.title {
+  flex-grow: 1;
+  text-align: center;
+  color: azure;
+  filter: brightness(100%);
+}
+
+.round {
+  color: azure;
+  filter: brightness(100%);
+}
+
+.button {
+  background-color: #d9534f;
+  color: white;
+  padding: 15px 50px;
+  border-radius: 8px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  margin-top: 50px;
+  /* đẩy lên để gần ảnh hơn */
+  margin-bottom: 30px;
+  transition: filter 0.3s ease;
+}
+
+.button:hover {
+  filter: brightness(80%);
+  transition: filter 0.3s ease;
+}
+
+.info {
+  margin-top: 30px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: azure;
+}
+
+/*# sourceMappingURL=event.css.map */

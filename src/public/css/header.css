@@ -1,0 +1,70 @@
+/* Font Bebas */
+.bebas-font {
+  font-family: "Bebas Neue", sans-serif !important;
+}
+
+/* Header */
+.header {
+  position: fixed;
+  background-color: #050F1A;
+  min-height: 75px;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  display: flex;
+}
+
+/* Navigation */
+#nav {
+  list-style: none;
+  height: 100%;
+  gap: 40px;
+}
+
+/* Items */
+#nav li {
+  display: inline-block;
+}
+
+/* Link style */
+#nav li a {
+  color: azure;
+  text-decoration: none;
+  line-height: 75px;
+  font-size: 15px;
+  padding: 0px 30px;
+  border-radius: 8px;
+  transition: background-color 0.3s, color 0.3s;
+  display: inline-block;
+}
+
+/* Uppercase */
+#nav > li > a {
+  text-transform: uppercase;
+}
+
+/* Hover */
+#nav li:hover a {
+  color: #74B9EF;
+  background-color: #20415C;
+  border-radius: 12px;
+}
+
+/* Title link */
+#home {
+  font-size: 32px !important;
+  transition: color 0.2s;
+  padding-left: 0px;
+  padding-right: 40px;
+}
+
+/* Hover for #home */
+#home:hover {
+  color: #44C0ED !important;
+  background-color: #050F1A !important;
+  border-radius: 12px;
+}
+
+/*# sourceMappingURL=header.css.map */

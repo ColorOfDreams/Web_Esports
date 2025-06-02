@@ -1,0 +1,140 @@
+@charset "UTF-8";
+.container {
+  margin: auto;
+}
+
+.main-image {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+  height: 660px;
+  margin-bottom: 123px;
+  background: url("../img/drx-deft-2.png") top center/cover no-repeat;
+  max-width: none;
+}
+
+.content {
+  color: azure;
+  min-height: 2500x;
+  font-size: 56px;
+  font-family: "Bebas Neue", sans-serif;
+}
+
+/* --- Phần mới chuyển flex --- */
+.match {
+  display: flex;
+  justify-content: center;
+}
+
+.match a {
+  display: flex;
+  width: 100%;
+  min-width: 900px;
+  text-decoration: none;
+}
+
+/* .img giữ kích thước cũ, thành flex container cho overlay */
+.img {
+  position: relative;
+  width: 100%;
+  height: 150px;
+  border-radius: 20px;
+  margin: 50px 0 77px;
+  background: top center/cover no-repeat;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img:hover {
+  box-shadow: 0 0 20px rgba(0, 150, 255, 0.5);
+  transform: scale(1.05);
+}
+
+/* overlay full cover .img, làm flex container để căn team */
+.overlay {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0 40px;
+  /* tạo khoảng cách trái/phải */
+  box-sizing: border-box;
+  justify-content: center;
+}
+
+.team {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+.left {
+  flex: 1 0 50%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: row;
+}
+
+.right {
+  flex: 1 0 50%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.team-name {
+  display: flex;
+  height: 100%;
+  font-weight: bold;
+  font-size: 56px;
+  align-items: center;
+}
+
+.logo-team {
+  width: 30%;
+  height: 150px;
+  display: flex;
+  align-items: center;
+}
+
+.right .logo-team {
+  padding-left: 30px;
+}
+
+/* logo ảnh giữ tỉ lệ */
+.logo-team img {
+  height: 50%;
+  width: auto;
+  object-fit: contain;
+  transition: filter 0.3s ease;
+}
+
+/* filter làm mờ ảnh và text */
+.left img,
+.right img,
+.left span,
+.right span {
+  filter: brightness(50%);
+  transition: filter 0.3s ease;
+}
+
+/* hover làm sáng */
+.left:hover img,
+.right:hover img,
+.left:hover span,
+.right:hover span {
+  filter: brightness(120%);
+}
+
+/*# sourceMappingURL=home.css.map */

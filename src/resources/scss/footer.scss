@@ -1,0 +1,59 @@
+.footer {
+    position: relative;
+    background: url('../img/129319156_p1.png') center center / cover no-repeat;
+    filter: brightness(90%);
+    color: white;
+    padding: 30px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 200px;
+    overflow: hidden;
+}
+
+.footer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Lớp phủ tối để text rõ hơn */
+    z-index: 0;
+}
+
+.footer-content {
+    position: relative;
+    z-index: 1;
+    max-width: 70%;
+}
+
+.footer-content p {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.footer-content ul {
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+.footer-content li {
+    margin-bottom: 8px;
+}
+
+.fb-link {
+    position: relative;
+    z-index: 1;
+    width: 50px;
+    height: 50px;
+    background: white url('https://cdn-icons-png.flaticon.com/512/733/733547.png') center center / 60% no-repeat;
+    border-radius: 50%;
+    display: block;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.fb-link:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+}

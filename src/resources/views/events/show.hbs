@@ -1,0 +1,37 @@
+<div class="container-event">
+    <div class="content-event">
+        <div class="content-top"><span>13:30</span></div>
+        <div class="content-mid">
+            <div class="img" style="background-image: url('{{event.img}}')">
+                <div class="overlay">
+                    <div class="team">
+                        <div class="left">
+                            <div class="team-name" style="color: {{event.team1.color}}">
+                                <span>{{event.team1.name}}</span>
+                            </div>
+                            <div class="logo-team"><img src="{{event.team1.logo}}" alt=""></div>
+                        </div>
+                        <div class="right">
+                            <div class="logo-team"><img src="{{event.team2.logo}}" alt=""></div>
+                            <div class="team-name" style="color: {{event.team2.color}}">
+                                <span>{{event.team2.name}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-bottom" style="font-family: 'Oswald', sans-serif;">
+            <div class="title">{{tournament._id}}</div>
+            <div class="round">{{event.competition_format}}</div>
+        </div>
+    </div>
+    <a href="ticket.html" class="button">Đặt vé</a>
+    <div class="info">
+        <p>Thông tin :</p>
+        <p>Nơi diễn ra : {{ tournament.venue }}, {{tournament.arena}}</p>
+        <p>Thời gian diễn ra : {{ event.time }}</p>
+        <p>Địa điểm : {{ tournament.district }}, {{ tournament.province }}, {{ tournament.city }},
+            {{tournament.country}}</p>
+    </div>
+</div>

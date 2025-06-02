@@ -1,0 +1,137 @@
+@charset "UTF-8";
+.container {
+  height: 1200px;
+  width: 80%;
+  margin: auto;
+}
+
+#match1,
+#match2,
+#match3,
+#match4 {
+  width: 100%;
+  height: 150px;
+  display: block;
+  border-radius: 20px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  /* hiệu ứng hover mượt mà */
+  margin: 50px 0px 77px 0px;
+  position: relative;
+}
+
+#match1 {
+  background: url("/assets/img/Match1.png") top center/cover no-repeat;
+}
+
+#match2 {
+  background: url("/assets/img/Match2.png") top center/cover no-repeat;
+}
+
+#match3 {
+  background: url("/assets/img/Match3.png") top center/cover no-repeat;
+}
+
+#match4 {
+  background: url("/assets/img/Match4.png") top center/cover no-repeat;
+}
+
+.content {
+  color: azure;
+  height: 600px;
+  font-size: 56px;
+  font-family: "Bebas Neue", sans-serif;
+}
+
+#match1:hover,
+#match2:hover,
+#match3:hover,
+#match4:hover {
+  box-shadow: 0 0 20px rgba(0, 150, 255, 0.5);
+  /* Bóng sáng trắng */
+  transform: scale(1.05);
+}
+
+.left {
+  width: 50%;
+  float: left;
+  height: 100%;
+}
+
+.right {
+  width: 50%;
+  float: right;
+  height: 100%;
+}
+
+.team-name {
+  width: 50%;
+  margin-top: 45px;
+}
+
+.left .team-name {
+  float: left;
+}
+
+.right .team-name {
+  float: right;
+}
+
+.right .team-name > span {
+  float: right;
+}
+
+.logo-team {
+  width: 50%;
+}
+
+.logo-team img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+
+.left .logo-team {
+  width: 50%;
+  height: 70px;
+  float: right;
+  margin-top: 45px;
+}
+
+.right .logo-team {
+  width: 50%;
+  height: 70px;
+  float: left;
+  margin-top: 45px;
+}
+
+/* Giảm độ sáng ảnh nền */
+.left img,
+.right img {
+  filter: brightness(50%);
+  /* Làm mờ ảnh */
+  transition: filter 0.3s ease;
+  /* Hiệu ứng chuyển đổi mượt mà */
+}
+
+.left span,
+.right span {
+  filter: brightness(50%);
+  /* Làm mờ ảnh */
+  transition: filter 0.3s ease;
+  /* Hiệu ứng chuyển đổi mượt mà */
+}
+
+/* Làm sáng ảnh khi hover */
+.left:hover img,
+.right:hover img {
+  filter: brightness(100%);
+  /* Khôi phục độ sáng khi hover */
+}
+
+.left:hover span,
+.right:hover span {
+  filter: brightness(100%);
+  /* Khôi phục độ sáng khi hover */
+}
+
+/*# sourceMappingURL=home.css.map */

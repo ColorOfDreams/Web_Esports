@@ -1,0 +1,44 @@
+const express = require('express')
+const { engine } = require('express-handlebars')
+const morgan = require('morgan')
+const path = require('path')
+
+// __dirname có sẵn trong CommonJS rồi nên không cần khai báo gì thêm
+
+const app = express()
+const port = 3000
+
+// Cấu hình handlebars/ Template engine 
+app.engine('hbs', engine({ extname: '.hbs' }))
+app.set('view engine', 'hbs')
+app.set('views', path.join(__dirname, 'resources', 'views'))
+
+// Static file
+app.use(express.static(path.join(__dirname, 'public')))
+
+// Logger
+app.use(morgan('combined', {
+    skip: (req, res) => req.url.startsWith('/json')
+}));
+
+
+// Connect  route
+
+const route = require('./routes/app.js')
+
+// Route
+
+route(app)
+
+// Connect DB
+
+const db = require("./config/db")
+
+// DB
+
+db.connect()
+
+// Start server
+app.listen(port, () => {
+    console.log(`Example app listening on port ${port}`)
+});

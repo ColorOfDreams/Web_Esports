@@ -1,0 +1,32 @@
+<div class="main-image"></div>
+<div class="content">
+    {{#each events}}
+    <p>{{this.tournament}}</p>
+    <div class="match">
+        <a href="/events/{{this.slug}}">
+            <div class="img" style="background-image: url('{{this.img}}');">
+                <div class="overlay">
+                    <div class="team">
+                        <div class="left">
+                            <div class="team-name" style="color: {{this.team1.color}};">
+                                <span>{{this.team1.name}}</span>
+                            </div>
+                            <div class="logo-team">
+                                <img src="{{this.team1.logo}}" alt="">
+                            </div>
+                        </div>
+                        <div class="right">
+                            <div class="logo-team">
+                                <img src="{{this.team2.logo}}" alt="">
+                            </div>
+                            <div class="team-name" style="color: {{this.team2.color}};">
+                                <span>{{this.team2.name}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    {{/each}}
+</div>
