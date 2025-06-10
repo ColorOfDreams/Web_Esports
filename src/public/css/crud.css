@@ -1,0 +1,59 @@
+.input {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  width: 750px;
+  height: 75px;
+}
+
+label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.crud {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  flex-direction: column;
+  background-color: #1e1e1e;
+  color: azure;
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+}
+
+.text-input,
+select {
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  padding: 8px;
+  color: azure;
+  border-radius: 4px;
+}
+
+.text-input:focus,
+select:focus {
+  outline: none;
+  border-color: #3c8ce1;
+  box-shadow: 0 0 5px #3c8ce1;
+}
+
+button[type=submit] {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.3s ease, box-shadow 0.2s ease-in-out;
+}
+
+button[type=submit]:hover {
+  background-color: #0056b3;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/*# sourceMappingURL=crud.css.map */

@@ -1,6 +1,7 @@
 const express = require('express')
 const { engine } = require('express-handlebars')
 const morgan = require('morgan')
+const methodOverride = require('method-override')
 const path = require('path')
 
 // __dirname có sẵn trong CommonJS rồi nên không cần khai báo gì thêm
@@ -9,12 +10,26 @@ const app = express()
 const port = 3000
 
 // Cấu hình handlebars/ Template engine 
-app.engine('hbs', engine({ extname: '.hbs' }))
+app.engine('hbs',
+    engine({
+        extname: '.hbs',
+        helpers: {
+            sum: (a, b) => a + b
+        }
+    }))
+
+
 app.set('view engine', 'hbs')
 app.set('views', path.join(__dirname, 'resources', 'views'))
 
 // Static file
 app.use(express.static(path.join(__dirname, 'public')))
+
+// Middleware parse form và JSON
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+app.use(methodOverride('_method'))
 
 // Logger
 app.use(morgan('combined', {

@@ -1,6 +1,6 @@
-const Event = require('../models/Event');
-const Tournament = require('../models/Tournament');
-const { mongooseToObject } = require('../../until/mongoose');
+const Event = require('../models/Event')
+const Tournament = require('../models/Tournament')
+const { mongooseToObject } = require('../../until/mongoose')
 
 class EventsController {
     // GET /events/:slug
@@ -8,14 +8,9 @@ class EventsController {
         Event.findOne({ slug: req.params.slug })
             .then(event => {
                 if (!event) return res.status(404).send('Không tìm thấy trận đấu');
-
-                console.log('Event:', event);
-                console.log('event.league:', event.league); // Phải là 'LCK' hoặc 'LCP'
-
                 Tournament.findOne({ _id: event.league })
                     .then(tournament => {
                         console.log('Tournament:', tournament);
-
                         res.render('events/show', {
                             event: mongooseToObject(event),
                             tournament: mongooseToObject(tournament)
@@ -25,7 +20,45 @@ class EventsController {
             })
             .catch(next);
     }
+    // GET /events/createẽ
+    create(req, res, next) {
+        res.render('events/create')
+    }
+
+    // POST /events/store
+    store(req, res, next) {
+        const event = new Event(req.body);
+        event.save()
+            .then(() => res.redirect('/'))
+            .catch(error => {
+            })
+    }
+
+    // EDIT /events/:id/store
+    edit(req, res, next) {
+        Event.findById(req.params.id)
+            .then(event => {
+                res.render('events/edit', {
+                    event: mongooseToObject(event)
+                })
+            })
+    }
+
+    // Update /events/:id/store
+    update(req, res, next) {
+        Event.updateOne({ _id: req.params.id }, req.body)
+            .then(() => res.redirect('/admin/stored/events'))
+            .catch(next)
+    }
+
+    destroy(req, res, next) {
+        Event.deleteOne({ _id: req.params.id })
+            .then(() => res.redirect('back'))
+            .catch(next)
+    }
+
 }
 
+// GET, POST, PUT, PATCH, DELETE, OPTIONS, HEAD
 
 module.exports = new EventsController();

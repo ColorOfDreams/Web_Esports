@@ -1,0 +1,58 @@
+<div class="crud">
+    <h3>Thêm trận đấu</h3>
+
+    <form method="POST" action="/events/store">
+        <div class="input">
+            <label for="tournament">Giải đấu(vd:LCK,LCP):</label>
+            <input type="text" class="text-input" id="tournament" name="tournament">
+        </div>
+        <div class="input">
+            <label for="img">Hình ảnh: </label>
+            <input type="text" class="text-input" id="img" name="img">
+        </div>
+        <div class="input">
+            <label for="team1_name">Tên đội 1:</label>
+            <input type="text" class="text-input" id="team1_name" name="team1_name">
+        </div>
+        <div class="input">
+            <label for="team1_color">Màu sắc:</label>
+            <input type="text" class="text-input" id="team1_color" name="team1_color">
+        </div>
+        <div class="input">
+            <label for="team1_logo">Logo:</label>
+            <input type="text" class="text-input" id="team1_logo" name="team1_logo">
+        </div>
+        <div class="input">
+            <label for="team2_name">Tên đội 2:</label>
+            <input type="text" class="text-input" id="team2_name" name="team2_name">
+        </div>
+        <div class="input">
+            <label for="team2_color">Màu sắc:</label>
+            <input type="text" class="text-input" id="team2_color" name="team2_color">
+        </div>
+        <div class="input">
+            <label for="team2_logo">Logo:</label>
+            <input type="text" class="text-input" id="team2_logo" name="team2_logo">
+        </div>
+        <div class="input">
+            <label for="time">thời gian bắt đầu thi đấu : </label>
+            <input type="text" class="text-input" id="time" name="time">
+        </div>
+        <div class="input">
+            <label for="competition_format">Thể thức thi đấu:</label>
+            <select name="competition_format" id="competition_format">
+                <option value="BO1">BO1</option>
+                <option value="BO3" selected>BO3</option>
+                <option value="BO5">BO5</option>
+            </select>
+        </div>
+        <div class="input">
+            <label for="league">Giải đấu</label>
+            <input type="text" class="text-input" id="league" name="league">
+        </div>
+
+        <div class="add">
+            <button type="submit">Thêm trận đấu</button>
+        </div>
+    </form>
+</div>

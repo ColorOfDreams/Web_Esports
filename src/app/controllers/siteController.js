@@ -6,9 +6,9 @@ class SiteController {
     // Get / site
     index(req, res, next) {
         Event.find({})
-            .then(events => {
+            .then(event => {
                 res.render('home', {
-                    events: multipleMongooseToObject(events)
+                    event: multipleMongooseToObject(event)
                 })
             })
             .catch(next);

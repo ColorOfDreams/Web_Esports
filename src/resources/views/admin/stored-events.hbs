@@ -1,0 +1,78 @@
+<div id="stored-manage">
+    <div class="manage">
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Tên trận đấu</th>
+                    <th>Thời gian</th>
+                    <th>Khu vực</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each events}}
+                <tr>
+                    <td>{{sum @index 1}}</td>
+                    <td>{{this.team1.name}} vs {{this.team2.name}}</td>
+                    <td>{{this.time}}</td>
+                    <td>{{this.league}}</td>
+                    <td>
+                        <a href="/events/{{this._id}}/edit" class="a edit">Sửa</a>
+                        <a href="#" data-id="{{this._id}}" class="a delete">Xóa</a>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<div id="delete-events-modal" class="modal">
+    <div class="modal-content">
+        <h3>Bạn có chắc chắn muốn xóa trận đấu này?</h3>
+        <form id="delete-form" method="POST">
+            <button type="submit" class="confirm-delete">Xóa</button>
+            <button type="button" class="cancel-delete">Hủy</button>
+        </form>
+    </div>
+</div>
+
+{{!-- delete form --}}
+<form method="POST" name="delete-event-form"></form>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const modal = document.getElementById("delete-events-modal");
+        const deleteForm = document.getElementById("delete-form");
+        const cancelBtn = document.querySelector(".cancel-delete");
+        const deleteButtons = document.querySelectorAll(".delete");
+
+        // Bắt sự kiện click vào nút XÓA
+        deleteButtons.forEach(function (btn) {
+            btn.addEventListener("click", function (e) {
+                e.preventDefault(); // Ngăn chuyển hướng
+                const id = this.getAttribute("data-id");
+                console.log("ID cần xóa:", id);
+
+                // Gán action cho form xóa
+                deleteForm.setAttribute("action", "/events/" + id + "?_method=DELETE");
+
+                // Hiện modal
+                modal.style.display = "flex";
+            });
+        });
+
+        // Nút hủy đóng modal
+        cancelBtn.addEventListener("click", function () {
+            modal.style.display = "none";
+        });
+
+        // Đóng khi click ra ngoài
+        window.addEventListener("click", function (e) {
+            if (e.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+    });
+</script>
