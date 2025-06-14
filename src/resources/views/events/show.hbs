@@ -26,7 +26,7 @@
             <div class="round">{{event.competition_format}}</div>
         </div>
     </div>
-    <a href="ticket.html" class="button">Đặt vé</a>
+    <a href="#" id="open-modal" class="button">Đặt vé</a>
     <div class="info">
         <p>Thông tin :</p>
         <p>Nơi diễn ra : {{ tournament.venue }}, {{tournament.arena}}</p>
@@ -35,3 +35,63 @@
             {{tournament.country}}</p>
     </div>
 </div>
+
+
+<div id="modal" class="modal" data-slug="{{event.slug}}" style="display: none">
+    <div class="container-ticket">
+        <div class="ticket-wrapper">
+            <div class="ticket-banner">
+                <div id="master-ticket-banner">
+                    <div class="ticket-content">
+                        <p>Vé Cao Thủ :</p>
+                        <p>Giá : 50.000đ</p>
+                        <p>Trạng Thái : Hết Vé</p>
+                        <button class="btn-master-ticket">Đặt vé</button>
+                    </div>
+                </div>
+                <div id="challenge-ticket-banner">
+                    <div class="ticket-content">
+                        <p>Vé Thách Đấu :</p>
+                        <p>Giá : 200.000đ</p>
+                        <p>Các vé quay thưởng skin</p>
+                        <p>Trạng Thái : Còn 12 vé</p>
+                        <button class="btn-challenger-ticket">Đặt vé</button>
+                    </div>
+                </div>
+                <div id="grandmaster-ticket-banner">
+                    <div class="ticket-content">
+                        <p>Vé Đại Cao Thủ :</p>
+                        <p>Giá : 100.000đ</p>
+                        <p>Các vé quay thưởng skin</p>
+                        <p>Trạng Thái : Hết Vé</p>
+                        <button class="btn-grandmaster-ticket">Đặt vé</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ticket-rank">
+                <div id="master-ticket-rank"></div>
+                <div id="challenge-ticket-rank"></div>
+                <div id="grandmaster-ticket-rank"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    const modal = document.getElementById('modal')
+
+    document.getElementById('open-modal').addEventListener('click', (e) => {
+        e.preventDefault();
+        modal.style.display = 'flex'
+    });
+
+    document.getElementById('close-modal')?.addEventListener('click', () => {
+        modal.style.display = 'none'
+    });
+
+    window.onclick = (e) => {
+        if (e.target == modal) {
+            modal.style.display = 'none'
+        }
+    }
+</script>

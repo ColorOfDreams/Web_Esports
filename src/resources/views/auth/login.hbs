@@ -1,6 +1,6 @@
 <div class="container-login">
     <span>Đăng nhập</span>
-    <form action="">
+    <form action="/auth/login" method="POST">
         <div class="login">
             <input type="email" placeholder="Email" required />
             <input type="password" placeholder="Mật khẩu" required />
@@ -11,4 +11,9 @@
             <button id="login-button" type="submit">Đăng nhập</button>
         </div>
     </form>
+    <div class="link-container">
+        <a href="/auth/register">Đăng ký</a> ·
+        <a href="">Quên mật khẩu</a> ·
+        <a href="">Gửi lại email xác nhận</a>
+    </div>
 </div>

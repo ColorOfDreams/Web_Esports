@@ -1,15 +1,14 @@
 <div class="container-login">
-    <span>Đăng nhập</span>
-    <form action="">
+    <span>Đăng ký</span>
+    <form action="/auth/register" method="POST">
         <div class="login">
             <input type="email" placeholder="Email" required />
-            <input type="password" placeholder="Tên của bạn" required />
+            <input name="name" type="text" placeholder="Tên của bạn" required />
             <input type="password" placeholder="Mật khẩu" required />
-            <div class="checkbox-container">
-                <input type="checkbox" id="remember-me" />
-                <label for="remember-me">Ghi nhớ</label>
-            </div>
             <button id="login-button" type="submit">Đăng ký</button>
         </div>
     </form>
+    <div class="link-container">
+        <a href="/auth/login">Đăng nhập</a> ·
+    </div>
 </div>

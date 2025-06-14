@@ -1,4 +1,5 @@
 const express = require('express')
+const session = require('express-session')
 const { engine } = require('express-handlebars')
 const morgan = require('morgan')
 const methodOverride = require('method-override')
@@ -17,6 +18,15 @@ app.engine('hbs',
             sum: (a, b) => a + b
         }
     }))
+
+
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+app.use(session({
+    secret: 'your_secret_key',
+    resave: false,
+    saveUninitialized: false
+}))
 
 
 app.set('view engine', 'hbs')
