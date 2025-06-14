@@ -8,9 +8,20 @@
                 <li><a class="nav-link" href="#">Chúng tôi là ai</a></li>
             </ul>
 
-            <!-- LOGIN BUTTON -->
+            <!-- USER ACTION -->
+            {{#if user}}
+            <div class="user-dropdown">
+                <button class="user-toggle" onclick="toggleDropdown()">
+                    <i class="fa fa-user-circle"></i> {{user.name}}
+                </button>
+                <ul id="dropdown-menu" class="dropdown-menu-custom">
+                    <li><a href="/user/profile">Trang cá nhân</a></li>
+                    <li><a href="/auth/logout">Đăng xuất</a></li>
+                </ul>
+            </div>
+            {{else}}
             <a href="/auth/register" class="btn btn-danger me-3" style="border-radius: 8px;">Đăng ký</a>
+            {{/if}}
         </div>
     </div>
-
 </div>

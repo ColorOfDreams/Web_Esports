@@ -1,0 +1,185 @@
+@charset "UTF-8";
+.header .d-flex {
+  display: flex;
+  align-items: center;
+}
+
+/* Wrapper for dropdown */
+.user-dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+  height: 75px;
+  border-radius: 8px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  transition: box-shadow 0.3s ease;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.user-dropdown:hover {
+  background-color: rgb(44, 133, 174);
+}
+
+/* Toggle button */
+.user-toggle {
+  background-color: transparent;
+  color: azure;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.user-toggle i {
+  margin-right: 6px;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user-toggle > button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Dropdown menu */
+.dropdown-menu-custom {
+  position: absolute;
+  right: 0;
+  top: 110%;
+  background-color: azure;
+  border-radius: 6px;
+  list-style: none;
+  padding: 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: none;
+  min-width: 150px;
+  z-index: 1000;
+  transition: transform 0.3s, box-shadow 0.3s;
+  transition: box-shadow 0.3s ease;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dropdown-menu-custom li {
+  border-bottom: 1px solid #3d8eeb;
+}
+
+.dropdown-menu-custom li:last-child {
+  border-bottom: none;
+}
+
+.dropdown-menu-custom a {
+  display: block;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #333;
+  transition: transform 0.3s, box-shadow 0.3s;
+  transition: box-shadow 0.3s ease;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dropdown-menu-custom a:hover {
+  background-color: #4ccde4;
+}
+
+.container-profile {
+  color: white;
+  text-align: center;
+  padding: 40px 20px;
+  margin: 77px 0px 52px 0px;
+}
+
+.user-info p,
+.user-info a {
+  margin: 5px 0;
+  color: white;
+  font-size: 14px;
+}
+
+.user-info a {
+  text-decoration: underline;
+  color: #cccccc;
+}
+
+.ticket-title {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-size: 18px;
+  text-align: left;
+  margin-left: 150px;
+}
+
+.ticket-section {
+  margin: 0 auto;
+  width: 80%;
+  background-color: #2a2a2a;
+  /* nền khối container */
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.ticket-section table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #1e1e1e;
+  /* nền bảng chính */
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.ticket-section th,
+.ticket-section td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #3a3a3a;
+  /* viền ngăn cách */
+}
+
+.ticket-section th {
+  background-color: #292929;
+  /* nền header bảng */
+  color: #00bfff;
+  /* xanh dương nhẹ - phong cách eSports */
+}
+
+.ticket-section tr:hover {
+  background-color: #333333;
+  /* hover tối hơn 1 chút */
+}
+
+.container-payment {
+  height: 600px;
+  text-align: center;
+  margin: 100px 0px 10px 0px;
+}
+
+.container-payment img {
+  max-width: 300px;
+  margin: 20px auto;
+  display: block;
+}
+
+.payment-info {
+  margin-top: 20px;
+}
+
+.payment-info p {
+  margin: 5px 0;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 20px 10px;
+  }
+  .container img {
+    max-width: 100%;
+  }
+}
+
+/*# sourceMappingURL=user.css.map */

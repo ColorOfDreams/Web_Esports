@@ -1,9 +1,21 @@
+<!-- Login View -->
 <div class="container-login">
     <span>Đăng nhập</span>
+
+    <!-- FLASH MESSAGES -->
+    <div class="flash-container">
+        {{#if success_msg}}
+        <div class="flash-message success">{{success_msg}}</div>
+        {{/if}}
+        {{#if error_msg}}
+        <div class="flash-message error">{{error_msg}}</div>
+        {{/if}}
+    </div>
+
     <form action="/auth/login" method="POST">
         <div class="login">
-            <input type="email" placeholder="Email" required />
-            <input type="password" placeholder="Mật khẩu" required />
+            <input type="email" name="email" placeholder="Email" required />
+            <input type="password" name="password" placeholder="Mật khẩu" required />
             <div class="checkbox-container">
                 <input type="checkbox" id="remember-me" />
                 <label for="remember-me">Ghi nhớ</label>
@@ -12,8 +24,15 @@
         </div>
     </form>
     <div class="link-container">
+        {{#if user}}
+        <a href="/profile">
+            <i class="fa fa-user-circle"></i> {{user.name}}
+        </a> ·
+        <a href="/auth/logout">Đăng xuất</a>
+        {{else}}
         <a href="/auth/register">Đăng ký</a> ·
         <a href="">Quên mật khẩu</a> ·
         <a href="">Gửi lại email xác nhận</a>
+        {{/if}}
     </div>
 </div>

@@ -25,7 +25,7 @@ class ticketController {
                     type
                 })
             }
-            res.redirect('/ticket/success'); // Chuyển đến trang thông báo mua thành công
+            res.redirect('/ticket/success')
         } catch (err) {
             res.status(500).send(err.toString())
         }

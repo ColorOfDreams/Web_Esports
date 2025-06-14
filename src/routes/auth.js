@@ -1,13 +1,14 @@
-const express = require('express');
-const router = express.Router();
-const AuthController = require('../app/controllers/authController');
+// src/routes/auth.js
+const express = require('express')
+const router = express.Router()
+const AuthController = require('../app/controllers/authController')
 
-// GET form
-router.get('/login', AuthController.loginForm);
-router.get('/register', AuthController.registerForm);
+// GET: Hiển thị form
+router.get('/login', AuthController.loginForm)
+router.get('/register', AuthController.registerForm)
 
-// POST xử lý
-router.post('/login', AuthController.login);
-router.post('/register', AuthController.register);
+// POST: Xử lý form
+router.post('/login', AuthController.loginLogic)
+router.post('/register', AuthController.registerLogic)
 
 module.exports = router;

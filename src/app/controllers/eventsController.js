@@ -20,8 +20,9 @@ class EventsController {
             })
             .catch(next);
     }
-    // GET /events/createẽ
+    // GET /events/create
     create(req, res, next) {
+        console.log(">>> Vào đúng controller register()");
         res.render('events/create')
     }
 
@@ -30,8 +31,7 @@ class EventsController {
         const event = new Event(req.body);
         event.save()
             .then(() => res.redirect('/'))
-            .catch(error => {
-            })
+            .catch(next)
     }
 
     // EDIT /events/:id/store

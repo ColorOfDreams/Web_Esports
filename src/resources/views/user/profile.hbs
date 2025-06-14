@@ -1,0 +1,46 @@
+<div class="container-profile">
+    <div class="user-info">
+        <div class="profile-info">
+            <p><strong>Ngày gia nhập:</strong> {{user.joinedAt}}</p>
+            <p>
+                <strong>Email:</strong> {{user.email}}
+                - <a href="/user/change-email">Đổi email</a>
+            </p>
+            <p>
+                <a href="/user/change-password">Đổi mật khẩu</a>
+            </p>
+            <p>
+                <strong>Số dư:</strong> {{user.balance}} đ
+            </p>
+        </div>
+    </div>
+
+    <h3 class="ticket-title">Vé đã đặt:</h3>
+
+    <div class="ticket-section">
+        <table>
+            <thead>
+                <tr>
+                    <th>Tên vé</th>
+                    <th>Giá tiền</th>
+                    <th>Trạng thái</th>
+                    <th>Ngày đặt</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Vé Thách Đấu</td>
+                    <td>200.000 đ</td>
+                    <td>Thành công</td>
+                    <td>13/05/2025</td>
+                </tr>
+                <tr>
+                    <td>Vé Cao Thủ</td>
+                    <td>50.000 đ</td>
+                    <td>Thành công</td>
+                    <td>01/05/2025</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
