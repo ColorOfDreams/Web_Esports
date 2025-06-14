@@ -31,8 +31,7 @@
 }
 
 .login input[type=email],
-.login input[type=password],
-.login input[type=name] {
+.login input[type=password] {
   width: 100%;
   height: 72px;
   padding: 10px;
@@ -62,23 +61,6 @@
 
 .login button:hover {
   background-color: #0056b3;
-}
-
-.link-container {
-  margin-top: 10px;
-  text-align: center;
-  color: #3895ff;
-  transition: filter 0.3s ease;
-}
-
-.link-container a {
-  color: #3895ff;
-  text-decoration: none;
-  margin: 0 5px;
-}
-
-.link-container a:hover {
-  color: tomato;
 }
 
 /*# sourceMappingURL=sign.css.map */

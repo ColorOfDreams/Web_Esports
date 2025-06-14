@@ -52,10 +52,9 @@ class EventsController {
     }
 
     destroy(req, res, next) {
-        const redirectUrl = req.query.redirectUrl || '/events'; // fallback nếu không có
         Event.deleteOne({ _id: req.params.id })
-            .then(() => res.redirect(redirectUrl))
-            .catch(next);
+            .then(() => res.redirect('back'))
+            .catch(next)
     }
 
 }

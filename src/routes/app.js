@@ -1,8 +1,7 @@
 const eventsRouter = require('./events')
 const adminController = require('./admin')
 const siteRouter = require('./site')
-const authRoutes = require('./auth')
-const ticketRoutes = require('./ticket')
+const authRoutes = require('./auth');
 
 function route(app) {
 
@@ -10,9 +9,7 @@ function route(app) {
 
     app.use('/events', eventsRouter)
 
-    app.use('/auth', authRoutes)
-
-    app.use('/ticket', ticketRoutes)
+    app.use('/auth', authRoutes);
 
     app.use('/', siteRouter)
 
