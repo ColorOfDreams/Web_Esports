@@ -1,0 +1,191 @@
+@charset "UTF-8";
+.container-ticket {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1F1F1F;
+  padding: 20px;
+}
+
+.ticket-wrapper {
+  margin: 30px 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #fff;
+  font-family: "Roboto Condensed", Arial, sans-serif;
+  flex-direction: column;
+}
+
+.ticket-banner {
+  height: 50%;
+  width: 100%;
+  display: flex;
+  gap: 80px;
+  justify-content: center;
+  align-items: center;
+}
+
+#master-ticket-banner,
+#challenge-ticket-banner,
+#grandmaster-ticket-banner {
+  height: 500px;
+  width: 200px;
+  display: block;
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+}
+
+#master-ticket-banner {
+  background: url(/img/Season_2023_-_Master_Banner.webp) top center/cover no-repeat;
+}
+
+#challenge-ticket-banner {
+  background: url(/img/Season_2023_-_Challenger_Banner.webp) top center/cover no-repeat;
+}
+
+#grandmaster-ticket-banner {
+  background: url(/img/Season_2023_-_Grandmaster_Banner.webp) top center/cover no-repeat;
+}
+
+.ticket-rank {
+  height: 20%;
+  width: 100%;
+  display: flex;
+  gap: 80px;
+  justify-content: center;
+  align-items: center;
+}
+
+#master-ticket-rank {
+  background: url(/img/Season_2023_-_Master.webp) top center/cover no-repeat;
+}
+
+#challenge-ticket-rank {
+  background: url(/img/Season_2023_-_Challenger.webp) top center/cover no-repeat;
+}
+
+#grandmaster-ticket-rank {
+  background: url(/img/Season_2023_-_Grandmaster.webp) top center/cover no-repeat;
+}
+
+#challenge-ticket-rank,
+#grandmaster-ticket-rank,
+#master-ticket-rank {
+  height: 200px;
+  width: 200px;
+  display: block;
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+}
+
+.ticket-content {
+  text-align: center;
+  padding: 20px;
+}
+
+.ticket-content p {
+  margin: 30px 0;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.btn-master-ticket {
+  background-color: #6e3aa7;
+  transition: box-shadow 0.3s ease;
+}
+
+.btn-master-ticket:hover {
+  box-shadow: 0 10px 20px -5px #9c51ec;
+  filter: brightness(1.2);
+}
+
+.btn-challenger-ticket {
+  background-color: #1f425d;
+  transition: box-shadow 0.3s ease;
+}
+
+.btn-challenger-ticket:hover {
+  box-shadow: 0 10px 20px -5px #142f44;
+  filter: brightness(1.2);
+}
+
+.btn-grandmaster-ticket {
+  background-color: #a12518;
+  transition: box-shadow 0.3s ease;
+}
+
+.btn-grandmaster-ticket:hover {
+  box-shadow: 0 10px 20px -5px #d12c1d;
+  filter: brightness(1.2);
+}
+
+#master-ticket-rank,
+#challenge-ticket-rank,
+#grandmaster-ticket-rank {
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 10px;
+}
+
+#master-ticket-rank:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 30px -10px #9c51ec;
+}
+
+#challenge-ticket-rank:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 30px -10px #142f44;
+}
+
+#grandmaster-ticket-rank:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 30px -10px #d12c1d;
+}
+
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.container-ticket {
+  background: rgba(0, 0, 0, 0.5);
+  /* màu đen, 50% trong suốt */
+  padding: 20px;
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+  /* nếu bạn muốn thêm một ít mờ phía sau */
+}
+
+/*# sourceMappingURL=ticket.css.map */

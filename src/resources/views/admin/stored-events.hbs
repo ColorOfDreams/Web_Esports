@@ -56,10 +56,14 @@
                 console.log("ID cần xóa:", id);
 
                 // Gán action cho form xóa
-                deleteForm.setAttribute("action", "/events/" + id + "?_method=DELETE");
+                const currentUrl = window.location.pathname;
+                deleteForm.setAttribute("action", "/events/" + id + "?_method=DELETE&redirectUrl=" + encodeURIComponent(currentUrl));
+
 
                 // Hiện modal
                 modal.style.display = "flex";
+
+                deleteForm.submit()
             });
         });
 
