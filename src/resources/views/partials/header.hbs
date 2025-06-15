@@ -5,7 +5,16 @@
             <ul id="nav" class="d-flex align-items-center m-0 p-0 ms-3">
                 <li><a id="home" class="nav-link bebas-font" href="/">ESPORTS</a></li>
                 <li><a class="nav-link" href="#">Sự Kiện</a></li>
-                <li><a class="nav-link" href="#">Chúng tôi là ai</a></li>
+
+                {{#if (eq user.role "admin")}}
+                <!-- Chức năng cho Admin -->
+                <li><a class="nav-link" href="/events/create">Thêm Sự Kiện</a></li>
+                <li><a class="nav-link" href="/admin/stored/events">Sửa Sự Kiện</a></li>
+                <li><a class="nav-link" href="/admin/tickets/create">Thêm Vé</a></li>
+                <li><a class="nav-link" href="/admin/stored/tickets">Sửa Vé</a></li>
+                <li><a class="nav-link" href="/admin/stored/users">Người Dùng</a></li>
+                <li><a class="nav-link" href="/admin/topup">Nạp Tiền</a></li>
+                {{/if}}
             </ul>
 
             <!-- USER ACTION -->

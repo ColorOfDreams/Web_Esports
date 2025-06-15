@@ -1,0 +1,96 @@
+<div id="stored-manage">
+    <div class="manage">
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Tên trận đấu</th>
+                    <th>Loại vé</th>
+                    <th>Giá</th>
+                    <th>Số lượng</th>
+                    <th>Slug sự kiện</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each tickets}}
+
+                <tr>
+                    <td>{{sum @index 1}}</td>
+                    <td>
+                        {{#if this.event}}
+
+                        {{this.event.team1.name}} vs {{this.event.team2.name}}
+
+                        {{else}}
+
+                        (Không rõ trận)
+
+                        {{/if}}
+
+                    </td>
+
+                    <td>
+                        <span class="badge badge-{{this.type}}">
+                            {{this.type}}
+
+                        </span>
+                    </td>
+
+                    <td>{{this.price}} VNĐ</td>
+                    <td>{{this.remaining}} / {{this.total}}</td>
+                    <td>{{this.eventSlug}}</td>
+                    <td>
+                        <a href="/admin/tickets/{{this._id}}/edit" class="a edit">Sửa</a>
+                        <a href="#" data-id="{{this._id}}" class="a delete">Xóa</a>
+                    </td>
+                </tr>
+
+                {{/each}}
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal xác nhận xóa -->
+<div id="delete-ticket-modal" class="modal">
+    <div class="modal-content">
+        <h3>Bạn có chắc chắn muốn xóa vé này?</h3>
+        <form id="delete-form" method="POST">
+            <button type="submit" class="confirm-delete">Xóa</button>
+            <button type="button" class="cancel-delete">Hủy</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const modal = document.getElementById("delete-ticket-modal");
+        const deleteForm = document.getElementById("delete-form");
+        const cancelBtn = document.querySelector(".cancel-delete");
+        const deleteButtons = document.querySelectorAll(".delete");
+
+        deleteButtons.forEach(function (btn) {
+            btn.addEventListener("click", function (e) {
+                e.preventDefault();
+                const id = this.getAttribute("data-id");
+                const currentUrl = window.location.pathname;
+
+                deleteForm.setAttribute("action", "/admin/tickets/" + id + "?_method=DELETE&redirectUrl=" + encodeURIComponent(currentUrl));
+
+                modal.style.display = "flex";
+            });
+        });
+
+        cancelBtn.addEventListener("click", function () {
+            modal.style.display = "none";
+        });
+
+        window.addEventListener("click", function (e) {
+            if (e.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+    });
+</script>

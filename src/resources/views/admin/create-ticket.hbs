@@ -1,0 +1,29 @@
+<div class="crud">
+    <h3>Thêm Vé Sự Kiện</h3>
+
+    <form method="POST" action="/admin/tickets/store">
+        <div class="input">
+            <label for="name">Tên loại vé:</label>
+            <input type="text" class="text-input" id="name" name="name" required>
+        </div>
+
+        <div class="input">
+            <label for="price">Giá vé (VNĐ):</label>
+            <input type="number" class="text-input" id="price" name="price" required>
+        </div>
+
+        <div class="input">
+            <label for="quantity">Số lượng vé:</label>
+            <input type="number" class="text-input" id="quantity" name="quantity" required>
+        </div>
+
+        <div class="input">
+            <label for="eventId">ID trận đấu (Event):</label>
+            <input type="text" class="text-input" id="eventId" name="eventId" required>
+        </div>
+
+        <div class="add">
+            <button type="submit">Thêm Vé</button>
+        </div>
+    </form>
+</div>

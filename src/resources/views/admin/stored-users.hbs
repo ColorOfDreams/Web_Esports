@@ -1,0 +1,29 @@
+<div id="stored-manage">
+    <div class="manage">
+
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Tên</th>
+                    <th>Email</th>
+                    <th>Số dư</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each users}}
+                <tr>
+                    <td>{{sum @index 1}}</td>
+                    <td>{{this.name}}</td>
+                    <td>{{this.email}}</td>
+                    <td>{{this.balance}} VNĐ</td>
+                    <td>
+                        <a href="/admin/users/{{this._id}}/topup" class="a edit">Nạp tiền</a>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -9,9 +9,14 @@ const User = new Schema({
     balance: {
         type: Number,
         default: 0
+    },
+    role: {
+        type: String,
+        enum: ['user', 'admin'],
+        default: 'user' // Mặc định là người dùng bình thường
     }
 }, {
-    timestamps: true // ✅ Tự động thêm createdAt và updatedAt
+    timestamps: true
 });
 
 module.exports = mongoose.model('User', User);

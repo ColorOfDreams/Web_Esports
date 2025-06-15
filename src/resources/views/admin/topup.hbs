@@ -1,0 +1,14 @@
+<div class="crud">
+    <h3>Nạp tiền cho {{user.name}}</h3>
+
+    <form method="POST" action="/admin/users/{{user._id}}/topup">
+        <div class="input">
+            <label for="amount">Số tiền cần nạp (VNĐ):</label>
+            <input type="number" class="text-input" id="amount" name="amount" required min="1">
+        </div>
+
+        <div class="add">
+            <button type="submit">Xác nhận nạp</button>
+        </div>
+    </form>
+</div>

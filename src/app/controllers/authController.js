@@ -35,7 +35,13 @@ class AuthController {
 
             const hashedPassword = await bcrypt.hash(password, 10);
 
-            const newUser = new User({ name, email, password: hashedPassword });
+            const newUser = new User({
+                name,
+                email,
+                password: hashedPassword,
+                role: 'user' // 👈 Thêm role mặc định
+            });
+
             await newUser.save();
 
             // Gửi email xác nhận
@@ -44,10 +50,10 @@ class AuthController {
                 to: email,
                 subject: 'Xác nhận đăng ký Web Esports',
                 html: `
-          <h2>Chào ${name},</h2>
-          <p>Bạn đã đăng ký tài khoản thành công tại <b>Web Esports</b>.</p>
-          <p>Cảm ơn bạn đã tham gia!</p>
-        `
+                    <h2>Chào ${name},</h2>
+                    <p>Bạn đã đăng ký tài khoản thành công tại <b>Web Esports</b>.</p>
+                    <p>Cảm ơn bạn đã tham gia!</p>
+                `
             });
 
             req.flash('success_msg', 'Đăng ký thành công, kiểm tra email để xác nhận!');
@@ -76,11 +82,13 @@ class AuthController {
                 return res.redirect('/auth/login');
             }
 
+            // ✅ Lưu role vào session
             req.session.user = {
                 id: user._id,
                 name: user.name,
                 email: user.email,
                 balance: user.balance,
+                role: user.role,           // 👈 Thêm role vào session
                 joinedAt: user.createdAt
             };
 
@@ -91,6 +99,21 @@ class AuthController {
             res.redirect('/auth/login');
         }
     }
+
+
+    logout(req, res) {
+        req.session.destroy(err => {
+            if (err) {
+                console.error('Lỗi khi đăng xuất:', err);
+                req.flash('error_msg', 'Lỗi khi đăng xuất!');
+                return res.redirect('/');
+            }
+
+            res.clearCookie('connect.sid'); // Xoá cookie session nếu cần
+            res.redirect('/home');
+        });
+    }
+
 }
 
 module.exports = new AuthController();

@@ -11,4 +11,6 @@ router.get('/register', AuthController.registerForm)
 router.post('/login', AuthController.loginLogic)
 router.post('/register', AuthController.registerLogic)
 
+router.get('/logout', AuthController.logout);
+
 module.exports = router;

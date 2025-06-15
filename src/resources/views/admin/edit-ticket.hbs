@@ -1,0 +1,28 @@
+<div class="crud">
+    <h3>Chỉnh sửa Vé</h3>
+    <form method="POST" action="/admin/tickets/{{ticket._id}}?_method=PUT">
+        <div class="input">
+            <label>Loại vé</label>
+            <input type="text" name="type" value="{{ticket.type}}" readonly class="text-input">
+        </div>
+        <div class="input">
+            <label>Giá</label>
+            <input type="number" name="price" value="{{ticket.price}}" class="text-input">
+        </div>
+        <div class="input">
+            <label>Tổng vé</label>
+            <input type="number" name="total" value="{{ticket.total}}" class="text-input">
+        </div>
+        <div class="input">
+            <label>Còn lại</label>
+            <input type="number" name="remaining" value="{{ticket.remaining}}" class="text-input">
+        </div>
+        <div class="input">
+            <label>Sự kiện (slug)</label>
+            <input type="text" name="eventSlug" value="{{ticket.eventSlug}}" readonly class="text-input">
+        </div>
+        <div class="add">
+            <button type="submit">Cập nhật</button>
+        </div>
+    </form>
+</div>

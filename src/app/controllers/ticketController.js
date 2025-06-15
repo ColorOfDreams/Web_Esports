@@ -46,13 +46,12 @@ class TicketController {
             const qrCodeData = await QRCode.toDataURL(qrPayload);
 
             const ticket = new Ticket({
-                event: event._id,
+                event: event._id,           // ✅ KHỚP với schema Ticket
                 user: user._id,
                 price: stock.price,
                 type: stock.type,
                 qrCodeData
             });
-
             stock.remaining -= 1;
             user.balance -= stock.price;
 
@@ -74,9 +73,8 @@ class TicketController {
             req.flash('success_msg', `Đặt vé ${stock.type} thành công!`);
             res.redirect(`/events/${stock.eventSlug}`);
         } catch (err) {
-            console.error(err);
-            req.flash('error_msg', 'Có lỗi xảy ra khi đặt vé.');
-            res.redirect('/');
+            console.error('[❌ LỖI MUA VÉ]', err);
+            return res.status(500).send(`<pre>${err.stack}</pre>`);
         }
     }
 }
