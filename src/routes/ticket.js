@@ -1,10 +1,8 @@
-const express = require('express')
-const router = express.Router()
+const express = require('express');
+const router = express.Router();
+const ticketController = require('../app/controllers/ticketController');
 
-const ticketsController = require("../app/controllers/ticketController")
+// Gửi form với ticketStockId tương ứng loại vé
+router.post('/buy', ticketController.buy);
 
-// ticketsController.app
-
-router.post('/', ticketsController.buy)
-
-module.exports = router
+module.exports = router;

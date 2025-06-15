@@ -41,32 +41,83 @@
     <div class="container-ticket">
         <div class="ticket-wrapper">
             <div class="ticket-banner">
+
+                {{#each ticketStocks}}
+                {{#if (eq this.type "master")}}
                 <div id="master-ticket-banner">
                     <div class="ticket-content">
                         <p>Vé Cao Thủ :</p>
-                        <p>Giá : 50.000đ</p>
-                        <p>Trạng Thái : Hết Vé</p>
-                        <button class="btn-master-ticket">Đặt vé</button>
+                        <p>Giá : {{this.price}}đ</p>
+                        <p>Trạng Thái :
+                            {{#if (gt this.remaining 0)}}
+                            Còn {{this.remaining}} vé
+                            {{else}}
+                            Hết Vé
+                            {{/if}}
+                        </p>
+                        {{#if (gt this.remaining 0)}}
+                        <form method="POST" action="/ticket/buy">
+                            <input type="hidden" name="ticketStockId" value="{{this._id}}">
+                            <button type="submit" class="btn-master-ticket">Đặt vé</button>
+                        </form>
+                        {{else}}
+                        <button class="btn-master-ticket" disabled>Hết vé</button>
+                        {{/if}}
                     </div>
                 </div>
+                {{/if}}
+
+                {{#if (eq this.type "challenge")}}
                 <div id="challenge-ticket-banner">
                     <div class="ticket-content">
                         <p>Vé Thách Đấu :</p>
-                        <p>Giá : 200.000đ</p>
+                        <p>Giá : {{this.price}}đ</p>
                         <p>Các vé quay thưởng skin</p>
-                        <p>Trạng Thái : Còn 12 vé</p>
-                        <button class="btn-challenger-ticket">Đặt vé</button>
+                        <p>Trạng Thái :
+                            {{#if (gt this.remaining 0)}}
+                            Còn {{this.remaining}} vé
+                            {{else}}
+                            Hết Vé
+                            {{/if}}
+                        </p>
+                        {{#if (gt this.remaining 0)}}
+                        <form method="POST" action="/ticket/buy">
+                            <input type="hidden" name="ticketStockId" value="{{this._id}}">
+                            <button type="submit" class="btn-challenger-ticket">Đặt vé</button>
+                        </form>
+                        {{else}}
+                        <button class="btn-challenger-ticket" disabled>Hết vé</button>
+                        {{/if}}
                     </div>
                 </div>
+                {{/if}}
+
+                {{#if (eq this.type "grandmaster")}}
                 <div id="grandmaster-ticket-banner">
                     <div class="ticket-content">
                         <p>Vé Đại Cao Thủ :</p>
-                        <p>Giá : 100.000đ</p>
+                        <p>Giá : {{this.price}}đ</p>
                         <p>Các vé quay thưởng skin</p>
-                        <p>Trạng Thái : Hết Vé</p>
-                        <button class="btn-grandmaster-ticket">Đặt vé</button>
+                        <p>Trạng Thái :
+                            {{#if (gt this.remaining 0)}}
+                            Còn {{this.remaining}} vé
+                            {{else}}
+                            Hết Vé
+                            {{/if}}
+                        </p>
+                        {{#if (gt this.remaining 0)}}
+                        <form method="POST" action="/ticket/buy">
+                            <input type="hidden" name="ticketStockId" value="{{this._id}}">
+                            <button type="submit" class="btn-grandmaster-ticket">Đặt vé</button>
+                        </form>
+                        {{else}}
+                        <button class="btn-grandmaster-ticket" disabled>Hết vé</button>
+                        {{/if}}
                     </div>
                 </div>
+                {{/if}}
+                {{/each}}
+
             </div>
 
             <div class="ticket-rank">
@@ -77,6 +128,7 @@
         </div>
     </div>
 </div>
+
 <script>
     const modal = document.getElementById('modal')
 
@@ -95,3 +147,13 @@
         }
     }
 </script>
+
+
+<div class="flash-container">
+    {{#if success_msg}}
+    <div class="flash-message success">{{success_msg}}</div>
+    {{/if}}
+    {{#if error_msg}}
+    <div class="flash-message error">{{error_msg}}</div>
+    {{/if}}
+</div>

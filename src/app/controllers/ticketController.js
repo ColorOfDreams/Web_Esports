@@ -1,35 +1,84 @@
-const Event = require('../models/Event')
-const Ticket = require('../models/Ticket')
-const { mongooseToObject } = require('../../until/mongoose')
+const Ticket = require('../models/Ticket');
+const TicketStock = require('../models/TicketStock');
+const User = require('../models/User');
+const Event = require('../models/Event');
+const QRCode = require('qrcode');
+const nodemailer = require('nodemailer');
 
-class ticketController {
-    // GET /events/:slug
+const transporter = nodemailer.createTransport({
+    host: "sandbox.smtp.mailtrap.io",
+    port: 2525,
+    auth: {
+        user: "83e4fdff7f243f",
+        pass: "1e5b48f2a33644"
+    }
+});
+
+class TicketController {
     async buy(req, res) {
-        if (!req.session?.userId) {
-            return res.redirect('/auth/login') // nếu chưa đăng nhập
+        const { ticketStockId } = req.body;
+
+        if (!req.session.user) {
+            req.flash('error_msg', 'Bạn cần đăng nhập để đặt vé.');
+            return res.redirect('/auth/login');
         }
-        const eventId = req.params.eventId;
-        const { type, quantity } = req.body;
 
         try {
-            const event = await Event.findById(eventId);
-            if (!event) return res.status(404).send('Không tìm thấy trận đấu');
-
-            // Kiểm dư ghế nếu cần
-            // kiểm tài chính nếu User đủ để mua vé
-            // Ở đây chỉ minh họa
-            for (let i = 0; i < quantity; i++) {
-                await Ticket.create({
-                    matchId: eventId,
-                    userId: req.session?.userId,
-                    type
-                })
+            const stock = await TicketStock.findById(ticketStockId);
+            if (!stock || stock.remaining <= 0) {
+                req.flash('error_msg', 'Vé đã hết hoặc không tồn tại.');
+                return res.redirect('/');
             }
-            res.redirect('/ticket/success')
+
+            const event = await Event.findOne({ slug: stock.eventSlug });
+            if (!event) {
+                req.flash('error_msg', 'Không tìm thấy sự kiện.');
+                return res.redirect('/');
+            }
+
+            const user = await User.findById(req.session.user.id);
+            if (user.balance < stock.price) {
+                req.flash('error_msg', 'Không đủ tiền trong tài khoản.');
+                return res.redirect(`/events/${stock.eventSlug}`);
+            }
+
+            const qrPayload = `TICKET|${user.email}|${stock.eventSlug}|${stock.type}|${Date.now()}`;
+            const qrCodeData = await QRCode.toDataURL(qrPayload);
+
+            const ticket = new Ticket({
+                event: event._id,
+                user: user._id,
+                price: stock.price,
+                type: stock.type,
+                qrCodeData
+            });
+
+            stock.remaining -= 1;
+            user.balance -= stock.price;
+
+            await Promise.all([ticket.save(), stock.save(), user.save()]);
+
+            await transporter.sendMail({
+                from: 'Web Esports <noreply@webesports.vn>',
+                to: user.email,
+                subject: `Xác nhận đặt vé ${stock.type.toUpperCase()}`,
+                html: `
+          <h2>Chúc mừng bạn đã đặt vé thành công</h2>
+          <p>Sự kiện: ${event.team1.name} vs ${event.team2.name}</p>
+          <p>Loại vé: ${stock.type}</p>
+          <p>Giá vé: ${stock.price} VNĐ</p>
+          <img src="${qrCodeData}" alt="Mã QR Vé"/>
+        `
+            });
+
+            req.flash('success_msg', `Đặt vé ${stock.type} thành công!`);
+            res.redirect(`/events/${stock.eventSlug}`);
         } catch (err) {
-            res.status(500).send(err.toString())
+            console.error(err);
+            req.flash('error_msg', 'Có lỗi xảy ra khi đặt vé.');
+            res.redirect('/');
         }
     }
 }
 
-module.exports = new ticketController()
+module.exports = new TicketController();

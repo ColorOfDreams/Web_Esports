@@ -14,7 +14,9 @@ app.engine('hbs',
     engine({
         extname: '.hbs',
         helpers: {
-            sum: (a, b) => a + b
+            sum: (a, b) => a + b,
+            eq: (a, b) => a === b,
+            gt: (a, b) => a > b
         }
     }))
 

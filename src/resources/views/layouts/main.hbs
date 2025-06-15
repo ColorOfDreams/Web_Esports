@@ -65,6 +65,16 @@
         });
     </script>
 
+
+    <div class="flash-container">
+        {{#if success_msg}}
+        <div class="flash-message success">{{success_msg}}</div>
+        {{/if}}
+        {{#if error_msg}}
+        <div class="flash-message error">{{error_msg}}</div>
+        {{/if}}
+    </div>
+
 </body>
 
 </html>
